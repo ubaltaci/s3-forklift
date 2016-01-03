@@ -1,7 +1,7 @@
 {
   "name": "s3-forklift",
-  "version": "0.0.1",
-  "description": "s3-forklift; aws-sdk based kinda simple s3 uploader",
+  "version": "0.0.2",
+  "description": "aws-sdk based kinda simple s3 uploader",
   "main": "index.js",
   "scripts": {
     "build": "node_modules/.bin/babel src -s -d dist",
@@ -14,8 +14,11 @@
   },
   "keywords": [
     "s3",
+    "amazon s3",
     "upload file to s3",
     "upload stream to s3",
+    "upload file s3",
+    "upload stream s3",
     "upload file",
     "upload stream",
     "s3-uploader",

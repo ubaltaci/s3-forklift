@@ -1,6 +1,6 @@
-##uploader
+## s3-forklift
 
-uploader-s3; [aws-sdk](https://github.com/aws/aws-sdk-js) based kinda high level s3 uploader. It wraps [upload](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property) method of aws-sdk`s S3.
+[aws-sdk](https://github.com/aws/aws-sdk-js) based kinda high level s3 uploader. It wraps [upload](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property) method of aws-sdk`s S3.
 
 ## Install
 
@@ -30,7 +30,7 @@ const forklift = new Forklift({
 
 * `source` should be string (file path) or readable stream.
 * `s3RemotePath` s3 path.
-* `options` are optional besides the all the options of original [S3.upload](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property) you can pass `{remove: true}` to remove the source if the source is a file.
+* `options` are optional. Besides the all the options of original [S3.upload](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property) you can pass `{remove: true}` to remove the source if the source is a file after upload completed successfully.
 
 ```javascript
 forklift.upload(source, s3RemotePath, /*options*/, (error, url) => {
