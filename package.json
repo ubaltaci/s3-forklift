@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ubaltaci/mechanic-s3.git"
+    "url": "git+ssh://git@github.com/ubaltaci/s3-forklift.git"
   },
   "keywords": [
     "s3",
