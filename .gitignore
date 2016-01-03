@@ -1,0 +1,30 @@
+secret.json
+.idea
+dist
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+
+pids
+results
+node_modules
+config
+
+npm-debug.log
+
+
+# node-webkit files
+*.exe
+*.dll
+*.pak
+
+# Mac OS X file system
+.DS_Store
+# temporary files
+*~
