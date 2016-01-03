@@ -4,7 +4,7 @@
   "description": "s3-forklift; aws-sdk based kinda simple s3 uploader",
   "main": "index.js",
   "scripts": {
-    "compile": "node_modules/.bin/babel src -s -d dist",
+    "build": "node_modules/.bin/babel src -s -d dist",
     "test": "npm run build && node_modules/.bin/mocha --compilers js:babel-register --timeout 20000",
     "prepublish": "npm run build"
   },
