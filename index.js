@@ -1,1 +1,1 @@
-module.exports = require("./dist/uploader");
+module.exports = require("./dist/forklift");

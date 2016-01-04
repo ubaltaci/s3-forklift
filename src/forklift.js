@@ -15,7 +15,7 @@ const optionSchema = Joi.object().keys({
     "default": Joi.any()
 });
 
-class Uploader {
+class Forklift {
 
     /**
      * Initialize Uplader
@@ -110,4 +110,4 @@ class Uploader {
     }
 }
 
-export default Uploader;
+export default Forklift;

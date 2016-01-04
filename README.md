@@ -1,6 +1,6 @@
 ## s3-forklift
 
-[aws-sdk](https://github.com/aws/aws-sdk-js) based kinda high level s3 uploader. It wraps [upload](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property) method of aws-sdk`s S3.
+[aws-sdk](https://github.com/aws/aws-sdk-js) based kinda high level s3 uploader. It wraps [upload](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property) method of aws-sdk`s S3. For file upload, `ContentType` automatically added. Also, it can remove uploaded file from file system, after upload completed successfully.
 
 ## Install
 
@@ -43,6 +43,9 @@ forklift.upload(source, s3RemotePath, /*options*/, (error, url) => {
 
 ```javascript
 // To upload file
+// ContentType automatically retrieved from file name and passed to S3.upload
+// if you want to override it, you should pass {ContentType:"<CONTENT_TYPE>"} as options.
+
 forklift.upload("test.jpg", "test/test.jpg", (error, url) => {
 	
 });
