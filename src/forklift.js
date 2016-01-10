@@ -110,4 +110,4 @@ class Forklift {
     }
 }
 
-export default Forklift;
+module.exports = Forklift;

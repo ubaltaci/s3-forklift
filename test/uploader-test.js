@@ -1,10 +1,10 @@
-import * as Path from "path";
-import * as Fse from "fs-extra";
-import * as Chai from "chai";
+const Path = require("path");
 
-import Forklift from "../";
-import * as Options from "../secret.json";
+const Chai = require("chai");
+const Fse = require("fs-extra");
 
+const Forklift = require("../");
+const Options = require("../secret.json");
 const Expect = Chai.expect;
 
 describe("Forklift", () => {
