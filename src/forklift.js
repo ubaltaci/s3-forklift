@@ -4,6 +4,10 @@ const AWS = require("aws-sdk");
 const Mimos = require("mimos");
 const Joi = require("joi");
 
+AWS.config.update({
+    signatureVersion: "v4"
+});
+
 const optionSchema = Joi.object().keys({
 
     accessKey: Joi.string().min(15).max(30).required(),
