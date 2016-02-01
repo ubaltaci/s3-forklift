@@ -76,8 +76,9 @@ class Forklift {
 
         const isSourceStream = IsStream.readable(source);
         const isSourceString = (typeof source == "string" || source instanceof String);
+        const isSourceBuffer = source instanceof Buffer;
 
-        if (!isSourceStream && !isSourceString) {
+        if (!isSourceStream && !isSourceString && !isSourceBuffer) {
             return callback(new Error("Source should be stream or path to existing file."));
         }
 
@@ -86,7 +87,7 @@ class Forklift {
         }
 
         const params = Object.assign(options, {
-            "Body": isSourceStream ? source : Fs.createReadStream(source),
+            "Body": (isSourceStream || isSourceBuffer) ? source : Fs.createReadStream(source),
             "Key": s3RemotePath
         });
 
