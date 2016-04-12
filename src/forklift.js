@@ -71,7 +71,7 @@ class Forklift {
         options = typeof options == "function" ? {} : options;
 
         const removeOption = options.remove !== true; // default false 
-        const timestampOption = options.timestamp !== false; // default true
+        const timestampOption = options.timestamp !== true; // default false
         
         if (!source) {
             return callback(new Error("Source should be exist."));
