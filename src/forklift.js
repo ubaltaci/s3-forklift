@@ -3,7 +3,6 @@ const IsStream = require("is-stream");
 const AWS = require("aws-sdk");
 const Mimos = require("mimos");
 const Joi = require("joi");
-const QueryString = require("querystring");
 
 AWS.config.update({
     signatureVersion: "v4"
@@ -71,6 +70,9 @@ class Forklift {
         callback = typeof options == "function" ? options : callback;
         options = typeof options == "function" ? {} : options;
 
+        const removeOption = options.remove !== true; // default false 
+        const timestampOption = options.timestamp !== false; // default true
+        
         if (!source) {
             return callback(new Error("Source should be exist."));
         }
@@ -89,7 +91,7 @@ class Forklift {
 
         const params = Object.assign(options, {
             "Body": (isSourceStream || isSourceBuffer) ? source : Fs.createReadStream(source),
-            "Key": QueryString.escape(s3RemotePath)
+            "Key": s3RemotePath
         });
 
         if (!params.ContentType) {
@@ -102,16 +104,21 @@ class Forklift {
                 return callback(error);
             }
 
-            if (!!options.remove && isSourceString) {
+            let url = this.remoteUrl + s3RemotePath;
+            if (timestampOption) {
+                url = `${url}?${Date.now()}`;
+            }
+            
+            if (removeOption && isSourceString) {
                 return Fs.unlink(source, (error) => {
                     if (error) {
                         return callback(error);
                     }
-                    return callback(null, this.remoteUrl + s3RemotePath);
+                    return callback(null, url);
                 });
             }
 
-            return callback(null, this.remoteUrl + s3RemotePath);
+            return callback(null, url);
         });
     }
 }
