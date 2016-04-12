@@ -1,3 +1,5 @@
+"use strict";
+
 const Fs = require("fs");
 const IsStream = require("is-stream");
 const AWS = require("aws-sdk");
@@ -70,8 +72,8 @@ class Forklift {
         callback = typeof options == "function" ? options : callback;
         options = typeof options == "function" ? {} : options;
 
-        const removeOption = options.remove !== true; // default false 
-        const timestampOption = options.timestamp !== true; // default false
+        const removeOption = options.remove !== false; // default true 
+        const timestampOption = options.timestamp === true; // default false
         
         if (!source) {
             return callback(new Error("Source should be exist."));
