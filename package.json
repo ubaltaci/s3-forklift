@@ -1,6 +1,6 @@
 {
   "name": "s3-forklift",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "aws-sdk based kinda simple s3 uploader",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,16 @@
     "uploader-s3",
     "forklift"
   ],
-  "author": "me@ugurbaltaci.com",
+  "author": {
+    "name": "Uğur Baltacı",
+    "email": "me@ugurbaltaci.com",
+    "url": "http://www.ugurbaltaci.com"
+  },
+  "maintaners": {
+    "name": "Çağdaş Akar",
+    "email": "cagdas.akar@gmail.com",
+    "web": "http://www.cagdasakar.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ubaltaci/s3-forklift/issues"

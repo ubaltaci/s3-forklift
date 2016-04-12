@@ -3,6 +3,7 @@ const IsStream = require("is-stream");
 const AWS = require("aws-sdk");
 const Mimos = require("mimos");
 const Joi = require("joi");
+const QueryString = require("querystring");
 
 AWS.config.update({
     signatureVersion: "v4"
@@ -88,7 +89,7 @@ class Forklift {
 
         const params = Object.assign(options, {
             "Body": (isSourceStream || isSourceBuffer) ? source : Fs.createReadStream(source),
-            "Key": s3RemotePath
+            "Key": QueryString.escape(s3RemotePath)
         });
 
         if (!params.ContentType) {
