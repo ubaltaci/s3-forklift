@@ -47,7 +47,7 @@ describe("Forklift", () => {
 
         const forklift = new Forklift(Options);
 
-        forklift.upload(Path.join(__dirname, "file", "karikatur.jpg"), "forklift-test/karikatur.jpg", (error, url) => {
+        forklift.upload(Path.join(__dirname, "file", "karikatur.jpg"), "forklift-test/karikatur.jpg", {remove: false}, (error, url) => {
 
             Expect(error).to.not.exist;
             Expect(url).to.exist;
@@ -63,7 +63,7 @@ describe("Forklift", () => {
 
         const forklift = new Forklift(Options);
 
-        forklift.upload(srcPath, "forklift-test/karikatur-test.jpg", {remove: true}, (error, url) => {
+        forklift.upload(srcPath, "forklift-test/karikatur-test.jpg", (error, url) => {
             Expect(error).to.not.exist;
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-test.jpg");
