@@ -1,1 +1,1 @@
-module.exports = require("./dist/forklift");
+module.exports = require("./lib/forklift");

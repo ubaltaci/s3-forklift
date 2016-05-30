@@ -1,6 +1,5 @@
 secret.json
 .idea
-dist
 lib-cov
 *.seed
 *.log

@@ -1,12 +1,10 @@
 {
   "name": "s3-forklift",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "aws-sdk based kinda simple s3 uploader",
   "main": "index.js",
   "scripts": {
-    "build": "node_modules/.bin/babel src -s -d dist",
-    "test": "npm run build && node_modules/.bin/mocha --compilers js:babel-register --timeout 20000",
-    "prepublish": "npm run build"
+    "test": "node_modules/.bin/mocha --timeout 20000"
   },
   "repository": {
     "type": "git",
@@ -47,16 +45,8 @@
     "mimos": "^3.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.6.5",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-register": "^6.9.0",
     "chai": "^3.5.0",
     "fs-extra": "^0.30.0",
     "mocha": "^2.4.5"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
   }
 }
