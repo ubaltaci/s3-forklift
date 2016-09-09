@@ -105,7 +105,7 @@ describe("Forklift", () => {
         const srcPath = Path.join(__dirname, "file", "karikatur.jpg");
         const forklift = new Forklift(Options);
 
-        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream-with-content-type.jpg", {ContentType: "image/jpeg"}, (error, url) => {
+        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream-with-content-type.jpg", {ContentType: "image/png"}, (error, url) => {
             Expect(error).to.not.exist;
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-stream-with-content-type.jpg");
