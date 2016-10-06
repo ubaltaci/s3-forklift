@@ -1,6 +1,6 @@
 ## s3-forklift
 
-[aws-sdk](https://github.com/aws/aws-sdk-js) based kinda high level s3 uploader. It wraps [upload](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property) method of aws-sdk`s S3. For file upload, `ContentType` automatically added. Also, it can remove uploaded file from file system, after upload completed successfully.
+[aws-sdk](https://github.com/aws/aws-sdk-js) based kinda high level s3 uploader. It wraps [upload](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property) method of aws-sdk. For file upload, `ContentType` automatically added. Also, it can remove uploaded file from the file system, after upload completed successfully.
 
 ## Install
 
@@ -10,7 +10,7 @@ npm install s3-forklift --save
 
 ## Requirements
 
-* Node.js 4 or newer
+* Node.js 6+
 
 ## Initialize
 
@@ -71,7 +71,3 @@ forklift.upload(fs.createReadStream("test.jpg"), "test/test.jpg", {ContentType:"
 Rename `secret.example.json` to `secret.json` with valid credentials and bucket-name.
 
 Then, run test via `npm run test`
-
-## Build from source
-
-`npm run build`
