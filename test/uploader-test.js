@@ -113,4 +113,18 @@ describe("Forklift", () => {
         });
     });
 
+    it("should upload pdf file with correct content types", (done) => {
+
+        const srcPath = Path.join(__dirname, "file", "pdf-test.pdf");
+
+        const forklift = new Forklift(Options);
+
+        forklift.upload(srcPath, "forklift-test/pdf-test.pdf", {remove: false}, (error, url) => {
+            Expect(error).to.not.exist;
+            Expect(url).to.exist;
+            Expect(url).to.have.string("forklift-test/pdf-test.pdf");
+            return done();
+        });
+    });
+
 });
