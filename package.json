@@ -1,6 +1,6 @@
 {
   "name": "s3-forklift",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "aws-sdk based kinda simple s3 uploader",
   "main": "index.js",
   "scripts": {
@@ -39,11 +39,11 @@
   },
   "homepage": "https://github.com/ubaltaci/s3-forklift#readme",
   "dependencies": {
-    "async": "2.0.1",
-    "aws-sdk": "2.6.6",
+    "async": "2.1.2",
+    "aws-sdk": "2.6.9",
     "is-stream": "1.1.0",
-    "joi": "9.1.0",
-    "mimos": "3.0.3"
+    "joi": "9.1.1",
+    "mime-db": "1.24.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
