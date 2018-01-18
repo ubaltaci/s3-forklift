@@ -26,9 +26,8 @@ describe("Forklift", () => {
     it("should return error when source not exist", (done) => {
 
         const forklift = new Forklift(Options);
-        forklift.upload("", "forklift-test/karikatur.jpg", (error, url) => {
+        forklift.upload("", "forklift-test/karikatur.jpg").catch((error) => {
             Expect(error).to.exist;
-            Expect(url).to.not.exist;
             done();
         });
     });
@@ -36,9 +35,8 @@ describe("Forklift", () => {
     it("should return error when s3RemotePath not exist", (done) => {
 
         const forklift = new Forklift(Options);
-        forklift.upload(Path.join(__dirname, "file", "karikatur.jpg"), "", (error, url) => {
+        forklift.upload(Path.join(__dirname, "file", "karikatur.jpg"), "").catch((error) => {
             Expect(error).to.exist;
-            Expect(url).to.not.exist;
             done();
         });
     });
@@ -47,9 +45,8 @@ describe("Forklift", () => {
 
         const forklift = new Forklift(Options);
 
-        forklift.upload(Path.join(__dirname, "file", "karikatur.jpg"), "forklift-test/karikatur.jpg", {remove: false}, (error, url) => {
+        forklift.upload(Path.join(__dirname, "file", "karikatur.jpg"), "forklift-test/karikatur.jpg", {remove: false}).then((url) => {
 
-            Expect(error).to.not.exist;
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur.jpg");
             return done();
@@ -63,8 +60,7 @@ describe("Forklift", () => {
 
         const forklift = new Forklift(Options);
 
-        forklift.upload(srcPath, "forklift-test/karikatur-test.jpg", (error, url) => {
-            Expect(error).to.not.exist;
+        forklift.upload(srcPath, "forklift-test/karikatur-test.jpg").then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-test.jpg");
             Expect(() => {
@@ -79,8 +75,7 @@ describe("Forklift", () => {
         const srcPath = Path.join(__dirname, "file", "karikatur.jpg");
         const forklift = new Forklift(Options);
 
-        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream.jpg", (error, url) => {
-            Expect(error).to.not.exist;
+        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream.jpg").then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-stream.jpg");
             return done();
@@ -92,8 +87,7 @@ describe("Forklift", () => {
         const srcPath = Path.join(__dirname, "file", "karikatur.jpg");
         const forklift = new Forklift(Options);
 
-        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream.jpg", {remove: true}, (error, url) => {
-            Expect(error).to.not.exist;
+        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream.jpg", {remove: true}).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-stream.jpg");
             return done();
@@ -105,8 +99,7 @@ describe("Forklift", () => {
         const srcPath = Path.join(__dirname, "file", "karikatur.jpg");
         const forklift = new Forklift(Options);
 
-        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream-with-content-type.jpg", {ContentType: "image/png"}, (error, url) => {
-            Expect(error).to.not.exist;
+        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream-with-content-type.jpg", {ContentType: "image/png"}).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-stream-with-content-type.jpg");
             return done();
@@ -119,8 +112,7 @@ describe("Forklift", () => {
 
         const forklift = new Forklift(Options);
 
-        forklift.upload(srcPath, "forklift-test/pdf-test.pdf", {remove: false}, (error, url) => {
-            Expect(error).to.not.exist;
+        forklift.upload(srcPath, "forklift-test/pdf-test.pdf", {remove: false}).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/pdf-test.pdf");
             return done();
