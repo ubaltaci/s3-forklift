@@ -12,30 +12,30 @@ describe("Forklift", () => {
     it("should throw error without credentials", () => {
 
         Expect(() => {
-            new Forklift()
+            new Forklift();
         }).throw();
     });
 
     it("should not throw error with valid credentials", () => {
 
         Expect(() => {
-            new Forklift(Options)
+            new Forklift(Options);
         }).not.throw();
     });
 
     it("should return error when source not exist", (done) => {
 
         const forklift = new Forklift(Options);
-        forklift.upload("", "forklift-test/karikatur.jpg").catch((error) => {
+        forklift.upload({remotePath: "forklift-test/karikatur.jpg"}).catch((error) => {
             Expect(error).to.exist;
             done();
         });
     });
 
-    it("should return error when s3RemotePath not exist", (done) => {
+    it("should return error when remotePath not exist", (done) => {
 
         const forklift = new Forklift(Options);
-        forklift.upload(Path.join(__dirname, "file", "karikatur.jpg"), "").catch((error) => {
+        forklift.upload({source: Path.join(__dirname, "file", "karikatur.jpg")}).catch((error) => {
             Expect(error).to.exist;
             done();
         });
@@ -45,7 +45,10 @@ describe("Forklift", () => {
 
         const forklift = new Forklift(Options);
 
-        forklift.upload(Path.join(__dirname, "file", "karikatur.jpg"), "forklift-test/karikatur.jpg", {remove: false}).then((url) => {
+        forklift.upload({
+            source: Path.join(__dirname, "file", "karikatur.jpg"),
+            remotePath: "forklift-test/karikatur.jpg"
+        }).then((url) => {
 
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur.jpg");
@@ -60,11 +63,15 @@ describe("Forklift", () => {
 
         const forklift = new Forklift(Options);
 
-        forklift.upload(srcPath, "forklift-test/karikatur-test.jpg").then((url) => {
+        forklift.upload({
+            source: srcPath,
+            remotePath: "forklift-test/karikatur-test.jpg",
+            options: {remove: true}
+        }).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-test.jpg");
             Expect(() => {
-                Fse.statSync(srcPath)
+                Fse.statSync(srcPath);
             }).throw();
             return done();
         });
@@ -75,7 +82,10 @@ describe("Forklift", () => {
         const srcPath = Path.join(__dirname, "file", "karikatur.jpg");
         const forklift = new Forklift(Options);
 
-        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream.jpg").then((url) => {
+        forklift.upload({
+            source: Fse.createReadStream(srcPath),
+            remotePath: "forklift-test/karikatur-stream.jpg"
+        }).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-stream.jpg");
             return done();
@@ -87,7 +97,11 @@ describe("Forklift", () => {
         const srcPath = Path.join(__dirname, "file", "karikatur.jpg");
         const forklift = new Forklift(Options);
 
-        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream.jpg", {remove: true}).then((url) => {
+        forklift.upload({
+            source: Fse.createReadStream(srcPath),
+            remotePath: "forklift-test/karikatur-stream.jpg",
+            options: {remove: true}
+        }).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-stream.jpg");
             return done();
@@ -99,20 +113,26 @@ describe("Forklift", () => {
         const srcPath = Path.join(__dirname, "file", "karikatur.jpg");
         const forklift = new Forklift(Options);
 
-        forklift.upload(Fse.createReadStream(srcPath), "forklift-test/karikatur-stream-with-content-type.jpg", {ContentType: "image/png"}).then((url) => {
+        forklift.upload({
+            source: Fse.createReadStream(srcPath),
+            remotePath: "forklift-test/karikatur-stream-with-content-type.jpg",
+            options: {ContentType: "image/png"}
+        }).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-stream-with-content-type.jpg");
             return done();
         });
     });
 
-    it("should upload pdf file with correct content types", (done) => {
+    it("should upload pdf file with correct content type", (done) => {
 
         const srcPath = Path.join(__dirname, "file", "pdf-test.pdf");
-
         const forklift = new Forklift(Options);
 
-        forklift.upload(srcPath, "forklift-test/pdf-test.pdf", {remove: false}).then((url) => {
+        forklift.upload({
+            source: srcPath,
+            remotePath: "forklift-test/pdf-test.pdf"
+        }).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/pdf-test.pdf");
             return done();
