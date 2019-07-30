@@ -47,7 +47,8 @@ describe("Forklift", () => {
 
         forklift.upload({
             source: Path.join(__dirname, "file", "karikatur.jpg"),
-            remotePath: "forklift-test/karikatur.jpg"
+            remotePath: "forklift-test/karikatur.jpg",
+            options: {remove: false}
         }).then((url) => {
 
             Expect(url).to.exist;
@@ -65,8 +66,7 @@ describe("Forklift", () => {
 
         forklift.upload({
             source: srcPath,
-            remotePath: "forklift-test/karikatur-test.jpg",
-            options: {remove: true}
+            remotePath: "forklift-test/karikatur-test.jpg"
         }).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-test.jpg");
@@ -116,7 +116,7 @@ describe("Forklift", () => {
         forklift.upload({
             source: Fse.createReadStream(srcPath),
             remotePath: "forklift-test/karikatur-stream-with-content-type.jpg",
-            options: {ContentType: "image/png"}
+            options: {ContentType: "image/png", remove: false}
         }).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/karikatur-stream-with-content-type.jpg");
@@ -131,7 +131,8 @@ describe("Forklift", () => {
 
         forklift.upload({
             source: srcPath,
-            remotePath: "forklift-test/pdf-test.pdf"
+            remotePath: "forklift-test/pdf-test.pdf",
+            options: {remove: false}
         }).then((url) => {
             Expect(url).to.exist;
             Expect(url).to.have.string("forklift-test/pdf-test.pdf");
