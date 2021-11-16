@@ -44,7 +44,7 @@
   "dependencies": {
     "@hapi/joi": "16.1.7",
     "@hapi/mimos": "4.1.1",
-    "aws-sdk": "2.573",
+    "aws-sdk": "2.814",
     "is-stream": "2.0.0"
   },
   "devDependencies": {
